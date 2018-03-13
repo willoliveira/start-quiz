@@ -1,7 +1,7 @@
-<div>
+<div fxLayout fxLayoutAlign="center">
 
-	<div>
-		<!-- <img class="sw-logo" src='/assets/star_wars_logo.png' /> -->
+	<div fxFlex="70">
+		<img class="sw-logo" src='/assets/star_wars_logo.png' />
 
 		<h1 class="sw-quiz__title">Star Wars Quiz</h1>
 		<div class="sw-quiz__description">
@@ -9,6 +9,6 @@
 			<p>Nibh meis et vix. Erant utinam liberavisse mel id. Ius at possim menandri efficiendi. Ei omnium forensibus per, cu summo solet vis, vel mucius bonorum consequuntur ad. Aliquid verterem mei an, liber persecuti scripserit ut mea. Enim expetendis eam ex, sed an ludus copiosae pericula.</p>
 		</div>
 
-		<button mat-button (click)="goToGame()" >Jogar</button>
+		<button mat-button routerLink="/game">Jogar</button>
 	</div>
 </div>

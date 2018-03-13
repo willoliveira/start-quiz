@@ -10,10 +10,5 @@ export class HomeComponent implements OnInit {
 
 	constructor(private router: Router) { }
 
-	ngOnInit() {
-	}
-
-	goToGame() {
-		this.router.navigate(['/game']);
-	}
+	ngOnInit() { }
 }
