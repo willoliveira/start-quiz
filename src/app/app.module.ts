@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 
@@ -11,14 +12,15 @@ import { GamePageModule } from './pages/game/game.component.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 
+
 @NgModule({
 	declarations: [
 		AppComponent
 	],
 	imports: [
-		BrowserModule, AppRoutingModule, BrowserAnimationsModule,
+		BrowserModule, AppRoutingModule,
 
-		MaterialModule,
+		BrowserAnimationsModule, FlexLayoutModule, MaterialModule,
 
 		HomePageModule,
 		GamePageModule
