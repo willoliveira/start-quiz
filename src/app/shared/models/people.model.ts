@@ -11,7 +11,7 @@ export interface People  {
 	skin_color: string;
 	eye_color: string;
 	birth_year: string;
-	gender: string
+	gender: string;
 	homeworld: Planet;
 	films: Array<Film>;
 	species: Array<Starship>;
@@ -19,5 +19,5 @@ export interface People  {
 	starships: Array<Starship>;
 	created: string;
 	edited: string;
-	url: string
+	url: string;
 }

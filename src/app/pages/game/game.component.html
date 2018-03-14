@@ -1,3 +1,47 @@
-<p>
-	game works!
-</p>
+<div fxLayout="column">
+	<mat-toolbar fxFlex="100">
+		<span>Star quiz</span>
+		<span class="spacer"></span>
+		<mat-icon>timer</mat-icon>
+		<span>0:00</span>
+	</mat-toolbar>
+
+	<div fxFlex="80%" class="list-container">
+		<div *ngIf="isLoading" class="bg-shadow">
+			<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+		</div>
+		<mat-grid-list cols="5" class="list-peopble">
+			<mat-grid-tile *ngFor="let SwPeople of SwPeoples">
+				<app-card-people
+					[people]="SwPeople"
+					(clickDetail)="onClickDetail($event)"
+					(clickAnswer)="onClickAnswer($event)">
+				</app-card-people>
+			</mat-grid-tile>
+		</mat-grid-list>
+
+		<mat-paginator
+			[length]="countPeoples"
+			pageSize="10"
+			(page)="onChangePage($event)">
+		</mat-paginator>
+	</div>
+</div>
+
+<!-- <div fxFlex="80%" class="list-container" fxLayout>
+	<div class="list-peopble"
+	fxLayout
+	fxLayoutGap="20px"
+	fxLayoutAlign="space-around"
+	fxLayoutWrap="wrap"
+	fxFlex>
+	<app-card-people
+	fxFlexFill="5"
+	fxFlex="15"
+	fxFlex.md="30"
+	fxFlex.sm="33"
+	fxFlex.xs="100%"
+	*ngFor="let SwPeople of SwPeoples">
+</app-card-people>
+</div>
+</div> -->
