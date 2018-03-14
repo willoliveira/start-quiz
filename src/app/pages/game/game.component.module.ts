@@ -12,14 +12,15 @@ import { TimerComponent } from './components/timer/timer.component';
 import { DialogPeopleAswerComponent } from './components/dialog-people-aswer/dialog-people-aswer.component';
 import { FormsModule } from '@angular/forms';
 import { TimerPipe } from '../../shared/pipes/timer/timer.pipe';
+import { ModalQuizFinishComponent } from './components/modal-quiz-finish/modal-quiz-finish.component';
 
 @NgModule({
 	declarations: [
 		GameComponent, TimerPipe,
-		CardPeopleComponent, ModalPeopleDetailsComponent, DialogPeopleAswerComponent, TimerComponent
+		CardPeopleComponent, ModalPeopleDetailsComponent, DialogPeopleAswerComponent, TimerComponent, ModalQuizFinishComponent
 	],
 	entryComponents: [
-		ModalPeopleDetailsComponent, DialogPeopleAswerComponent, TimerComponent
+		ModalPeopleDetailsComponent, DialogPeopleAswerComponent, TimerComponent, ModalQuizFinishComponent
 	],
 	exports: [
 		GameComponent

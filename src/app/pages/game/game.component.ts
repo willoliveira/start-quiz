@@ -7,6 +7,8 @@ import { FilmService } from '../../shared/services/film/film.service';
 import { DialogPeopleAswerComponent } from './components/dialog-people-aswer/dialog-people-aswer.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { Subscription } from 'rxjs/Subscription';
+import { ModalQuizFinishComponent } from './components/modal-quiz-finish/modal-quiz-finish.component';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-game',
@@ -31,8 +33,10 @@ export class GameComponent implements OnInit {
 
 	private dialogPeopleDetailtRef: MatDialogRef<ModalPeopleDetailsComponent>;
 	private dialogPeopleAswertRef: MatDialogRef<DialogPeopleAswerComponent>;
+	private modalQuizFinishRef: MatDialogRef<ModalQuizFinishComponent>;
 
 	constructor(
+		private router: Router,
 		private peopleService: PeopleService,
 		private filmService: FilmService,
 		private dialog: MatDialog
@@ -92,6 +96,11 @@ export class GameComponent implements OnInit {
 
 	onFinishTimer() {
 		console.log('onFinishTimer');
+		this.modalQuizFinishRef = this.dialog.open(ModalQuizFinishComponent, {});
+		this.modalQuizFinishRef.afterClosed()
+			.subscribe((result: string) => {
+				this.router.navigate(['/home']);
+			});
 	}
 
 	// TODO: Ficou feio, tentar refazer isso depois
