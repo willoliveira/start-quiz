@@ -8,21 +8,24 @@ import { PeopleService } from '../../shared/services/people/people.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalPeopleDetailsComponent } from './components/modal-people-details/modal-people-details.component';
 import { FilmService } from '../../shared/services/film/film.service';
+import { TimerComponent } from './components/timer/timer.component';
+import { DialogPeopleAswerComponent } from './components/dialog-people-aswer/dialog-people-aswer.component';
+import { FormsModule } from '@angular/forms';
+import { TimerPipe } from '../../shared/pipes/timer/timer.pipe';
 
 @NgModule({
 	declarations: [
-		GameComponent,
-		CardPeopleComponent,
-		ModalPeopleDetailsComponent
+		GameComponent, TimerPipe,
+		CardPeopleComponent, ModalPeopleDetailsComponent, DialogPeopleAswerComponent, TimerComponent
 	],
 	entryComponents: [
-		ModalPeopleDetailsComponent
+		ModalPeopleDetailsComponent, DialogPeopleAswerComponent, TimerComponent
 	],
 	exports: [
 		GameComponent
 	],
 	imports: [
-		CommonModule,
+		CommonModule, FormsModule,
 		MaterialModule, FlexLayoutModule,
 
 		HttpClientModule

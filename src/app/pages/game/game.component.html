@@ -1,12 +1,14 @@
 <div fxLayout="column">
-	<mat-toolbar fxFlex="100">
-		<span>Star quiz</span>
-		<span class="spacer"></span>
-		<mat-icon>timer</mat-icon>
-		<span>0:00</span>
-	</mat-toolbar>
+	<div class="game-header" fxFlex="100">
+		<h1>Star quiz</h1>
+		<app-timer
+			(Finish)="onFinishTimer($event)"
+			(Start)="onStartTimer($event)"
+			[timer]='120000'>
+		</app-timer>
+	</div>
 
-	<div fxFlex="80%" class="list-container">
+	<!-- <div fxFlex="80%" class="list-container">
 		<div *ngIf="isLoading" class="bg-shadow">
 			<mat-progress-bar mode="indeterminate"></mat-progress-bar>
 		</div>
@@ -25,23 +27,27 @@
 			pageSize="10"
 			(page)="onChangePage($event)">
 		</mat-paginator>
+	</div> -->
+
+	<div fxFlex="80" class="list-container" fxLayout fxLayoutAlign="center">
+		<div class="list-peopble" fxLayout="column" fxFlex fxLayoutGap="20px" fxLayoutAlign="space-around" fxLayoutWrap="wrap">
+
+			<div *ngIf="isLoading" class="bg-shadow">
+				<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+			</div>
+
+			<div fxLayout>
+				<app-card-people
+					fxFlexFill="5" fxFlex="15" fxFlex.md="30" fxFlex.sm="33" fxFlex.xs="100%"
+					*ngFor="let SwPeople of SwPeoples"
+
+					[people]="SwPeople"
+					(clickDetail)="onClickDetail($event)"
+					(clickAnswer)="onClickAnswer($event)">
+				</app-card-people>
+			</div>
+
+			<mat-paginator [length]="countPeoples" pageSize="10" (page)="onChangePage($event)"></mat-paginator>
+		</div>
 	</div>
 </div>
-
-<!-- <div fxFlex="80%" class="list-container" fxLayout>
-	<div class="list-peopble"
-	fxLayout
-	fxLayoutGap="20px"
-	fxLayoutAlign="space-around"
-	fxLayoutWrap="wrap"
-	fxFlex>
-	<app-card-people
-	fxFlexFill="5"
-	fxFlex="15"
-	fxFlex.md="30"
-	fxFlex.sm="33"
-	fxFlex.xs="100%"
-	*ngFor="let SwPeople of SwPeoples">
-</app-card-people>
-</div>
-</div> -->

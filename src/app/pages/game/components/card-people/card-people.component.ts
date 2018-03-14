@@ -9,6 +9,7 @@ import { People } from '../../../../shared/models/people.model';
 export class CardPeopleComponent implements OnInit {
 
 	@Input() people: People;
+
 	@Output() clickDetail: EventEmitter<People> = new EventEmitter();
 	@Output() clickAnswer = new EventEmitter();
 

@@ -16,9 +16,4 @@ export class ModalPeopleDetailsComponent implements OnInit {
 	ngOnInit() {
 		console.log(this.data);
 	}
-
-	onNoClick(): void {
-		this.dialogRef.close();
-	}
-
 }

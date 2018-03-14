@@ -4,6 +4,7 @@ import { PeopleService } from '../../shared/services/people/people.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ModalPeopleDetailsComponent } from './components/modal-people-details/modal-people-details.component';
 import { FilmService } from '../../shared/services/film/film.service';
+import { DialogPeopleAswerComponent } from './components/dialog-people-aswer/dialog-people-aswer.component';
 
 @Component({
 	selector: 'app-game',
@@ -18,6 +19,7 @@ export class GameComponent implements OnInit {
 	private isLoading: Boolean = true;
 
 	private dialogPeopleDetailtRef: MatDialogRef<ModalPeopleDetailsComponent>;
+	private dialogPeopleAswertRef: MatDialogRef<DialogPeopleAswerComponent>;
 
 	constructor(
 		private peopleService: PeopleService,
@@ -50,11 +52,25 @@ export class GameComponent implements OnInit {
 			minWidth: '500px', data
 		});
 		this.dialogPeopleDetailtRef.afterClosed().subscribe(() => {
+			console.log('dialogPeopleDetailtRef');
 		});
 	}
 
 	onClickAnswer(data: People) {
-		console.log('onClickAnswer', data);
+		this.dialogPeopleAswertRef = this.dialog.open(DialogPeopleAswerComponent, {
+			data: { people: data, return: '' }
+		});
+		this.dialogPeopleAswertRef.afterClosed().subscribe((result) => {
+			console.log('dialogPeopleAswertRef', result);
+		});
+	}
+
+	onStartTimer() {
+		console.log('onStartTimer');
+	}
+
+	onFinishTimer() {
+		console.log('onFinishTimer');
 	}
 
 	getPeopleDetail() {
