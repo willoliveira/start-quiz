@@ -1,7 +1,8 @@
 <div fxLayout="column">
 	<div class="game-header" fxFlex="100">
 		<h1>Star quiz</h1>
-		<app-timer
+		<app-timer #timer
+			[autoStart]="false"
 			(Finish)="onFinishTimer($event)"
 			(Start)="onStartTimer($event)"
 			[timer]='120000'>
@@ -41,6 +42,7 @@
 					fxFlexFill="5" fxFlex="15" fxFlex.md="30" fxFlex.sm="33" fxFlex.xs="100%"
 					*ngFor="let SwPeople of SwPeoples"
 
+					[status]="getStatusCard(SwPeople)"
 					[people]="SwPeople"
 					(clickDetail)="onClickDetail($event)"
 					(clickAnswer)="onClickAnswer($event)">

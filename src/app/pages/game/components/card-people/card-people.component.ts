@@ -9,6 +9,7 @@ import { People } from '../../../../shared/models/people.model';
 export class CardPeopleComponent implements OnInit {
 
 	@Input() people: People;
+	@Input() status: 'error' | 'success' | 'success-half' | 'none' = 'none';
 
 	@Output() clickDetail: EventEmitter<People> = new EventEmitter();
 	@Output() clickAnswer = new EventEmitter();
@@ -20,5 +21,9 @@ export class CardPeopleComponent implements OnInit {
 
 	onClickEventEmmiter(evt: EventEmitter<People>) {
 		evt.emit(this.people);
+	}
+
+	getDisabled(): Boolean {
+		return this.status === 'none' ? false : true;
 	}
 }

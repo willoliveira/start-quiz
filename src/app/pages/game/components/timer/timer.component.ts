@@ -7,15 +7,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
 
+	private idTimeout: number;
 	private timerProgress = 0;
+	private timerAmount = 1000;
+	private _started: Boolean;
+	private _paused: Boolean = false;
 
-	@Input() timer = 10000;
-	@Input() timerAdded = 1000;
-	@Input() autoStart: Boolean = true;
-	@Input() decrement: Boolean = true;
+	@Input() private timer = 10000;
+	@Input() private autoStart: Boolean = true;
+	@Input() private decrement: Boolean = true;
 
-	@Output() Finish: EventEmitter<number> = new EventEmitter();
-	@Output() Start: EventEmitter<number> = new EventEmitter();
+	@Output() private Finish: EventEmitter<number> = new EventEmitter();
+	@Output() private Start: EventEmitter<number> = new EventEmitter();
 
 	constructor() { }
 
@@ -25,26 +28,62 @@ export class TimerComponent implements OnInit {
 		}
 	}
 
+	reStart() {
+		this.clear();
+		this.start();
+	}
+
 	start() {
+		if (!this._paused && this._started) {
+			return;
+		}
 		if (this.Start) {
 			this.Start.emit();
 		}
 		if (this.decrement) {
-			this.timerAdded *= -1;
+			this.timerAmount *= -1;
 			this.timerProgress = this.timer;
 		}
-		setTimeout(this.counter.bind(this), Math.abs(this.timerAdded));
+		this.idTimeout = setTimeout(this.counter.bind(this), Math.abs(this.timerAmount));
+	}
+
+	isStarted(): Boolean {
+		return this._started;
+	}
+
+	pause() {
+		this._paused = true;
+		if (this.idTimeout) {
+			clearTimeout(this.idTimeout);
+		}
+	}
+
+	isPaused() {
+		return this._paused;
+	}
+
+	resume() {
+		this._paused = false;
+		this.idTimeout = setTimeout(this.counter.bind(this), Math.abs(this.timerAmount));
+	}
+
+	clear() {
+		this.timerProgress = 0;
+		this._started = false;
+		if (this.idTimeout) {
+			clearTimeout(this.idTimeout);
+		}
 	}
 
 	private counter() {
-		this.timerProgress = this.timerProgress + this.timerAdded;
+		this.timerProgress = this.timerProgress + this.timerAmount;
 		if ((this.decrement && this.timerProgress <= 0) ||
 			(this.decrement && this.timerProgress >= this.timer)) {
 			if (this.Finish) {
 				this.Finish.emit();
 			}
 		} else {
-			setTimeout(this.counter.bind(this), Math.abs(this.timerAdded));
+			this.idTimeout = setTimeout(this.counter.bind(this), Math.abs(this.timerAmount));
 		}
 	}
 }

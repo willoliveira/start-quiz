@@ -1,10 +1,11 @@
-<mat-card class="example-card">
-	{{teste}}
+<mat-card class="card-people-sw" [ngClass]="status">
 	<img mat-card-image src="/assets/star_wars_logo.png" alt="Photo of a Shiba Inu">
 	<mat-card-actions>
 		<button mat-button
+			[disabled]="getDisabled()"
 			(click)="onClickEventEmmiter(clickAnswer)">?</button>
 		<button mat-button
+			[disabled]="getDisabled()"
 			(click)="onClickEventEmmiter(clickDetail)">...</button>
 	</mat-card-actions>
 </mat-card>
