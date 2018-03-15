@@ -2,8 +2,10 @@ import { Planet } from './planet.model';
 import { Film } from './film.model';
 import { Starship } from './starship.model';
 import { Vehicle } from './vehicle.model';
+import { Specie } from './specie.model';
 
-export interface People  {
+export interface People {
+	id: number;
 	name: string;
 	height: number;
 	mass: number;
@@ -14,7 +16,7 @@ export interface People  {
 	gender: string;
 	homeworld: Planet;
 	films: Array<Film>;
-	species: Array<Starship>;
+	species: Array<Specie>;
 	vehicles: Array<Vehicle>;
 	starships: Array<Starship>;
 	created: string;

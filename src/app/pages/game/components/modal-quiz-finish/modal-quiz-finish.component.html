@@ -1,16 +1,20 @@
 <div>
 	<h2 mat-dialog-title>Quiz Finalizado!</h2>
 	<div mat-dialog-content>
+		<div>
+			<p>{{data.score}} pontos</p>
+		</div>
+		<p>Preencha abaixo para salvar sua pontuação</p>
 		<mat-form-field>
-			<input matInput placeholder="Nome">
+			<input matInput placeholder="Nome" [(ngModel)]="data.entity.user">
 		</mat-form-field>
 		<mat-form-field>
-			<input matInput placeholder="E-mail">
+			<input matInput placeholder="E-mail" [(ngModel)]="data.entity.email">
 		</mat-form-field>
 	</div>
 	<div mat-dialog-actions>
-		<button mat-button cdkFocusInitial>Fechar</button>
-		<button mat-button>Salvar</button>
+		<button mat-button>Fechar</button>
+		<button mat-button cdkFocusInitial [mat-dialog-close]="data.entity">Salvar</button>
 	</div>
 </div>
 

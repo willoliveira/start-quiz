@@ -1,0 +1,13 @@
+.component-timer {
+	color: #fff;
+	float: right;
+	line-height: 60px;
+	position: relative;
+	margin: 0 20px;
+
+	.mat-icon {
+		position: absolute;
+		top: 16px;
+		left: -30px;
+	}
+}

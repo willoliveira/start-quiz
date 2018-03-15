@@ -13,6 +13,10 @@ import { DialogPeopleAswerComponent } from './components/dialog-people-aswer/dia
 import { FormsModule } from '@angular/forms';
 import { TimerPipe } from '../../shared/pipes/timer/timer.pipe';
 import { ModalQuizFinishComponent } from './components/modal-quiz-finish/modal-quiz-finish.component';
+import { StarshipService } from '../../shared/services/starship/starship.service';
+import { VehicleService } from '../../shared/services/vehicle/vehicle.service';
+import { SpecieService } from '../../shared/services/specie/specie.service';
+import { HomeworldService } from '../../shared/services/homeworld/homeworld.service';
 
 @NgModule({
 	declarations: [
@@ -32,7 +36,7 @@ import { ModalQuizFinishComponent } from './components/modal-quiz-finish/modal-q
 		HttpClientModule
 	],
 	providers: [
-		PeopleService, FilmService
+		PeopleService, FilmService, StarshipService, VehicleService, SpecieService, HomeworldService
 	]
 })
 export class GamePageModule { }

@@ -27,7 +27,18 @@ export class PeopleService {
 		// }
 		return this.http.get(`${API_STARWARS_URL}people?page=${page}`)
 		.pipe(
-			map(response => response)
+			map((response: any) => {
+				response.results.forEach((element: any) => {
+					const splited = element.url.split('/');
+					const id = splited[splited.length - 2];
+					element.id = id.trim();
+				});
+				return response;
+			})
 		);
+	}
+
+	getImage(name) {
+		return this.http.get(`https://pixabay.com/api/?key=2779220-fc18bd9ac9619ced4a7c773fc&q=${name}`);
 	}
 }

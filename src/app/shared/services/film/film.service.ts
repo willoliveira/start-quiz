@@ -3,7 +3,7 @@ import { Film } from '../../models/film.model';
 import { HttpClient } from '@angular/common/http';
 import { API_STARWARS_URL } from '../../utils/Config';
 
-import { map, expand } from 'rxjs/operators';
+import { map, expand, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/empty';
@@ -11,7 +11,7 @@ import 'rxjs/add/observable/empty';
 @Injectable()
 export class FilmService {
 
-	private _films: Array<Film>;
+	private _films: Array<Film> = [ ];
 
 	constructor(private http: HttpClient) { }
 
@@ -23,8 +23,7 @@ export class FilmService {
 		// tslint:disable-next-line:prefer-const
 		let index = 0;
 		const get = (): Observable<any> => {
-			return this.http
-				.get(`${API_STARWARS_URL}films/${filmIds[index]}`);
+			return this.getFilm(filmIds[index]);
 		};
 
 		return get().pipe(
@@ -38,7 +37,18 @@ export class FilmService {
 		);
 	}
 
-	getFilm(filmId) {
-		return this.http.get(`${API_STARWARS_URL}films/${filmId}`);
+	getFilm(filmId): Observable<Film> {
+		const film = this._films.find(f => f.id === filmId);
+		if (film) {
+			return Observable.of(film);
+		}
+		return this.http
+			.get<Film>(`${API_STARWARS_URL}films/${filmId}`)
+			.pipe(
+				tap((response: Film) => {
+					response.id = filmId;
+					this._films.push(response);
+				})
+			);
 	}
 }

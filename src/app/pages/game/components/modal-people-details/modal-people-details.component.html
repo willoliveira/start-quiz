@@ -1,11 +1,12 @@
 <div>
 	<h2 mat-dialog-title>Details</h2>
 	<mat-dialog-content>
-		<p>Specie: {{data.species}}</p>
+		<p>Specie: {{getMap(data.species, 'name')}}</p>
 		<p>Height: {{data.height}}</p>
 		<p>Hair: {{data.hair_color}}</p>
-		<p>Planet: {{data.homeworld}}</p>
-		<p>Movies: {{data.films}}</p>
-		<p>Vehicles: {{data.vehicles}}</p>
+		<p>Planet: {{data.homeworld.name}}</p>
+		<p>Movies: {{getMap(data.films, 'title')}}</p>
+		<p>Vehicles: {{getMap(data.vehicles, 'name')}}</p>
+		<p>Starships: {{getMap(data.starships, 'name')}}</p>
 	</mat-dialog-content>
 </div>

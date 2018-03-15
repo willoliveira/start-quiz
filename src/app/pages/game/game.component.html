@@ -1,11 +1,14 @@
-<div fxLayout="column">
-	<div class="game-header" fxFlex="100">
-		<h1>Star quiz</h1>
+<div class="game-container" fxLayout="column" fxLayoutAlign="start center">
+	<div class="game-header">
+		<div class="title-container">
+			<img class="sw-logo" src='/assets/logo.png' />
+			<span>Star quiz</span>
+		</div>
 		<app-timer #timer
 			[autoStart]="false"
 			(Finish)="onFinishTimer($event)"
 			(Start)="onStartTimer($event)"
-			[timer]='120000'>
+			[timer]='1200000'>
 		</app-timer>
 	</div>
 
@@ -30,17 +33,19 @@
 		</mat-paginator>
 	</div> -->
 
-	<div fxFlex="80" class="list-container" fxLayout fxLayoutAlign="center">
-		<div class="list-peopble" fxLayout="column" fxFlex fxLayoutGap="20px" fxLayoutAlign="space-around" fxLayoutWrap="wrap">
+	<div class="list-container">
+		<div class="list-peopble" fxLayout="column" fxLayoutAlign="center center">
 
 			<div *ngIf="isLoading" class="bg-shadow">
 				<mat-progress-bar mode="indeterminate"></mat-progress-bar>
 			</div>
 
-			<div fxLayout>
+			<div class="cards-container" fxLayout="row wrap" >
 				<app-card-people
-					fxFlexFill="5" fxFlex="15" fxFlex.md="30" fxFlex.sm="33" fxFlex.xs="100%"
 					*ngFor="let SwPeople of SwPeoples"
+
+					fxFlex.xs="150px" fxFlex.sm="150px" fxFlex.md="150px" fxFlex.lg="150px"
+					class="card-people"
 
 					[status]="getStatusCard(SwPeople)"
 					[people]="SwPeople"
@@ -49,7 +54,8 @@
 				</app-card-people>
 			</div>
 
-			<mat-paginator [length]="countPeoples" pageSize="10" (page)="onChangePage($event)"></mat-paginator>
 		</div>
 	</div>
+
+	<mat-paginator [length]="countPeoples" pageSize="10" (page)="onChangePage($event)"></mat-paginator>
 </div>

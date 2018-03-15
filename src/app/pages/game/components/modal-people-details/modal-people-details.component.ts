@@ -14,6 +14,12 @@ export class ModalPeopleDetailsComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		console.log(this.data);
+	}
+
+	getMap(data: Array<any>, key) {
+		if (!data || !data.length) {
+			return '';
+		}
+		return data.map(d => d[key]);
 	}
 }
