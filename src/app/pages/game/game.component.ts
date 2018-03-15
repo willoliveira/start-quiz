@@ -28,12 +28,12 @@ export class GameComponent implements OnInit {
 
 	@ViewChild('timer') timerInstance: TimerComponent;
 
-	private countPeoples = 0;
-	private page = 1;
-	private SwPeoples: Array<People> = [ ];
-	private isLoading: Boolean = true;
+	public countPeoples = 0;
+	public page = 1;
+	public SwPeoples: Array<People> = [ ];
+	public isLoading: Boolean = true;
 
-	private points: Array<{
+	public points: Array<{
 		people: People,
 		score: {
 			point?: number, consulted?: boolean, disabled?: boolean
@@ -239,11 +239,11 @@ export class GameComponent implements OnInit {
 		});
 	}
 
-	onStartTimer() {
+	onStartTimer(evt) {
 		console.log('onStartTimer');
 	}
 
-	onFinishTimer() {
+	onFinishTimer(evt) {
 		console.log('onFinishTimer');
 		const score = this.sumPoints();
 

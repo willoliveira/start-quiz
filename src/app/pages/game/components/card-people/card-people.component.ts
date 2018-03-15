@@ -14,7 +14,7 @@ export class CardPeopleComponent implements OnInit {
 	@Input() people: People;
 	@Input() status: 'error' | 'success' | 'success-half' | 'none' = 'none';
 
-	@Output() clickDetail: EventEmitter<People> = new EventEmitter();
+	@Output() clickDetail = new EventEmitter();
 	@Output() clickAnswer = new EventEmitter();
 
 	constructor(private peopleService: PeopleService) { }
@@ -26,7 +26,7 @@ export class CardPeopleComponent implements OnInit {
 		return `./assets/characters/${this.people.id}.jpg`;
 	}
 
-	onClickEventEmmiter(evt: EventEmitter<People>) {
+	onClickEventEmmiter(evt: EventEmitter<{}>) {
 		evt.emit(this.people);
 	}
 

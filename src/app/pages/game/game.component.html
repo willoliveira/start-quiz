@@ -8,30 +8,9 @@
 			[autoStart]="false"
 			(Finish)="onFinishTimer($event)"
 			(Start)="onStartTimer($event)"
-			[timer]='1200000'>
+			[timer]='120000'>
 		</app-timer>
 	</div>
-
-	<!-- <div fxFlex="80%" class="list-container">
-		<div *ngIf="isLoading" class="bg-shadow">
-			<mat-progress-bar mode="indeterminate"></mat-progress-bar>
-		</div>
-		<mat-grid-list cols="5" class="list-peopble">
-			<mat-grid-tile *ngFor="let SwPeople of SwPeoples">
-				<app-card-people
-					[people]="SwPeople"
-					(clickDetail)="onClickDetail($event)"
-					(clickAnswer)="onClickAnswer($event)">
-				</app-card-people>
-			</mat-grid-tile>
-		</mat-grid-list>
-
-		<mat-paginator
-			[length]="countPeoples"
-			pageSize="10"
-			(page)="onChangePage($event)">
-		</mat-paginator>
-	</div> -->
 
 	<div class="list-container">
 		<div class="list-peopble" fxLayout="column" fxLayoutAlign="center center">

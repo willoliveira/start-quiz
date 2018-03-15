@@ -7,8 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
 
+	public timerProgress = 0;
 	private idTimeout: number;
-	private timerProgress = 0;
 	private timerAmount = 1000;
 	private _started: Boolean;
 	private _paused: Boolean = false;
